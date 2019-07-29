@@ -44,7 +44,7 @@
 							<li class="menu-item"><a href="{{ route('services') }}">Services</a></li>
 							<li class="menu-item"><a href="{{ route('gallery') }}">Gallery</a></li>
 							<div class="dropdown">
-								<li class="menu-item"><a href="#">Parlour</a>
+								<li class="menu-item"><a href="{{ route('all_parlors') }}">Parlour</a>
 									<div class="dropdown-content">
 										<ul  class="hide">
 											@foreach($parlors as $parlor)
@@ -55,10 +55,10 @@
 								</li>
 							</div>
 							<li class="menu-item"><a href="{{ route('login') }}" class="btn btn-link">Login</a></li> / <li class="menu-item"><a href="{{ route('register') }}" class="btn btn-link">SignUp</a></li>
-							{{--
-							<input type="text" placeholder="Search.." name="search">
-							<button type="submit"><i class="fa fa-search"></i></button>
-							--}}
+							<li class="menu-item"><form action="{{ route('all_parlors') }}" class="subscribe-form">
+								<input type="text" placeholder="Parlor name..." name="search">
+								<input type="submit" value="Search">
+							</form></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 

@@ -19,6 +19,8 @@ Route::get('/like/{package}', 'SiteController@addLike')->name('add_like');
 Route::get('/service/{service_id}', 'SiteController@service')->name('service');
 Route::get('/PackageDetail/{package}', 'SiteController@packageDetail')->name('package_detail');
 Route::get('/MorePackages', 'SiteController@packages')->name('more_packages');
+Route::get('/AllParlors', 'SiteController@allParlors')->name('all_parlors');
+Route::get('/ParlorDetails/{parlor}', 'SiteController@parlorDetails')->name('parlor_details');
 Route::get('/book/{package}', 'SiteController@book')->name('book')->middleware('auth');
 
 Auth::routes();

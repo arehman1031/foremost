@@ -95,4 +95,23 @@ class SiteController extends Controller
 			'this_package' => $package
 		]);
 	}
+
+	public function allParlors()
+	{
+		if(isset($_GET['search']) && strlen($_GET['search']) > 0) {
+			$parlors = \App\Parlor::where('name', 'like', '%'.$_GET['search'].'%')->get();
+		} else {
+			$parlors = \App\Parlor::all();
+		}
+		return view('site.parlors', [
+			'parlors' => $parlors
+		]);
+	}
+
+	public function parlorDetails(\App\Parlor $parlor)
+	{
+		return view('site.parlor', [
+			'parlor' => $parlor
+		]);
+	}
 }
