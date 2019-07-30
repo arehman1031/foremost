@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'SiteController@index');
+Route::get('/', 'SiteController@index')->name('index');
 Route::get('/services', 'SiteController@services')->name('services');
 Route::get('/about', 'SiteController@about')->name('about');
 Route::get('/gallery', 'SiteController@gallery')->name('gallery');
