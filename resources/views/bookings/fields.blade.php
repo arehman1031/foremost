@@ -1,13 +1,19 @@
-<!-- User Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
+<input type="hidden" name="user_id" value="{{ Auth::id() }}">
+<!-- Package Id Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('package_id', 'Package:') !!}
+	<input type="text" name="" value="{{ $booking->package->name }}" class="form-control" readonly>
+	<input type="hidden" name="package_id" value="{{ $booking->package_id }}" class="form-control" readonly>
 </div>
 
-<!-- Package Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('package_id', 'Package Id:') !!}
-    {!! Form::number('package_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('date', 'Date:') !!}
+    {!! Form::date('date', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('time', 'Time:') !!}
+    {!! Form::time('time', \Carbon\Carbon::parse($booking->time)->format('H:i'), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

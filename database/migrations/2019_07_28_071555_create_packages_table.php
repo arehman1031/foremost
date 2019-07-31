@@ -19,6 +19,7 @@ class CreatePackagesTable extends Migration
             $table->string('desc')->nullable();
             $table->string('image')->nullable();
 			$table->boolean('is_popular')->nullable();
+			$table->integer('popularity')->default(0);
 
 			$table->integer('category_id')->unsigned();
 			$table->foreign('category_id')

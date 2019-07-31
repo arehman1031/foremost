@@ -54,14 +54,17 @@ class SiteController extends Controller
 
 	public function book(\App\Package $package)
 	{
-		\App\Models\Booking::create([
+		$dt 		= \Carbon\Carbon::now();
+		$booking	= \App\Models\Booking::create([
 			'user_id'		=> Auth::id(),
-			'package_id'	=> $package->id
+			'package_id'	=> $package->id,
+			'date'			=> $dt->toDateString(),
+			'time'			=> $dt->toTimeString()
 		]);
 
 		Flash::success('Booking saved successfully.');
 
-		return redirect(route('bookings.index'));
+		return redirect(route('bookings.edit', $booking->id));
 	}
 
 	public function packages()
