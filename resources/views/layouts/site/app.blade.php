@@ -39,7 +39,7 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item {{ Request::is('index*') ? 'current-menu-item' : '' }}"><a href="/">Home</a></li>
+							<li class="menu-item {{ Request::is('/*') ? 'current-menu-item' : '' }}"><a href="/">Home</a></li>
 							<li class="menu-item {{ Request::is('about*') ? 'current-menu-item' : '' }}"><a href="{{ route('about') }}">About</a></li>
 							<li class="menu-item {{ Request::is('services*') ? 'current-menu-item' : '' }}"><a href="{{ route('services') }}">Services</a></li>
 							<li class="menu-item {{ Request::is('gallery*') ? 'current-menu-item' : '' }}"><a href="{{ route('gallery') }}">Gallery</a></li>
