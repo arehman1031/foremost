@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-		<title>Foremost</title>
+		<title>{{config('app.name')}}</title>
 		<!-- Loading third party fonts -->
 		<link href="{{asset('fonts/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 		<link href="{{ asset('fonts/novecento-font/novecento-font.css') }}" rel="stylesheet" type="text/css">
@@ -20,7 +20,7 @@
 	</head>
 
 
-	<body class="homepage header-collapse">
+	<body class="{{ Request::is('/') ? 'homepage header-collapse' : '' }}">
 
 		<div id="site-content">
 
@@ -39,7 +39,7 @@
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item {{ Request::is('/*') ? 'current-menu-item' : '' }}"><a href="/">Home</a></li>
+							<li class="menu-item {{ Request::is('/') ? 'current-menu-item' : '' }}"><a href="/">Home</a></li>
 							<li class="menu-item {{ Request::is('about*') ? 'current-menu-item' : '' }}"><a href="{{ route('about') }}">About</a></li>
 							<li class="menu-item {{ Request::is('services*') ? 'current-menu-item' : '' }}"><a href="{{ route('services') }}">Services</a></li>
 							<li class="menu-item {{ Request::is('gallery*') ? 'current-menu-item' : '' }}"><a href="{{ route('gallery') }}">Gallery</a></li>
@@ -54,11 +54,18 @@
 									</div>
 								</li>
 							</div>
-							<li class="menu-item"><a href="{{ route('login') }}" class="btn btn-link">Login</a></li> / <li class="menu-item"><a href="{{ route('register') }}" class="btn btn-link">SignUp</a></li>
-							<li class="menu-item"><form action="{{ route('all_parlors') }}" class="subscribe-form">
-								<input type="text" placeholder="Parlor name..." name="search">
-								<input type="submit" value="Search">
-							</form></li>
+							@if(Auth::guest())
+							<li class="menu-item"><a href="{{ route('login') }}" class="btn btn-link">Login</a></li>
+							<li class="menu-item"><a href="{{ route('register') }}" class="btn btn-link">SignUp</a></li>
+							@else
+							<li class="menu-item"><a href="{{ route('home') }}" class="btn btn-link">Dashboard</a></li>
+							@endif
+							<li class="menu-item">
+								<form action="{{route('all_parlors')}}" class="subscribe-form">
+									<input type="text" placeholder="Parlor name...">
+									<input type="submit" value="Search">
+								</form>
+							</li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -66,34 +73,9 @@
 				</div>
 			</header>
 
-			<div class="hero hero-slider">
-				<ul class="slides">
-					<li data-bg-image="{{asset('dummy/slideimg1.jpg')}}">
-						<div class="container">
-							<h3 class="slider-subtitle">What are u looking for?</h3>
-							<h2 class="slider-title">Professional</h2>
-							<p>This is the platform you are finding where you can book any service in your desired parlor or salon....!</p>
-							<a href="#" class="button large">Read more</a>
-						</div>
-					</li>
-					<li data-bg-image="{{asset('dummy/slideimg4.jpg')}}">
-						<div class="container">
-							<h3 class="slider-subtitle">What are u looking for?</h3>
-							<h2 class="slider-title">Professional</h2>
-							<p>This is the platform you are finding where you can book any service in your desired parlor or salon....!</p>
-							<a href="#" class="button large">Read more</a>
-						</div>
-					</li>
-					<li data-bg-image="{{asset('dummy/slideimg3.jpg')}}">
-						<div class="container">
-							<h3 class="slider-subtitle">What are u looking for?</h3>
-							<h2 class="slider-title">Professional</h2>
-							<p>This is the platform you are finding where you can book any service in your desired parlor or salon....!</p>
-							<a href="#" class="button large">Read more</a>
-						</div>
-					</li>
-				</ul>
-			</div>
+			@if(Request::is('/'))
+			@include('layouts.site.slider')
+			@endif
 
 			<main class="main-content">
 				@yield('content')
@@ -145,10 +127,6 @@
 				</div>
 			</footer>
 		</div>
-
-
-
-
 		<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
 		<script src="{{asset('js/plugins.js')}}"></script>
 		<script src="{{asset('js/app.js')}}"></script>

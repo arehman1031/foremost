@@ -90,11 +90,14 @@
 
             <div class="row">
                 <div class="col-xs-8">
+					<a href="{{ url('/login') }}" class="btn btn-link">I already have a membership</a>
+					{{--
                     <div class="checkbox icheck">
                         <label>
                             <input type="checkbox"> I agree to the <a href="#">terms</a>
                         </label>
                     </div>
+					--}}
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
@@ -104,7 +107,7 @@
             </div>
         </form>
 
-        <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
+
     </div>
     <!-- /.form-box -->
 </div>
