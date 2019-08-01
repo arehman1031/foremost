@@ -21,6 +21,10 @@ class ChangeDescSize1000 extends Migration
 		    $table->string('desc', 1000)->nullable()->change();
 		});
 
+		Schema::table('galleries', function (Blueprint $table) {
+		    $table->string('desc', 1000)->nullable()->change();
+		});
+
 		Schema::table('packages', function (Blueprint $table) {
 		    $table->string('desc', 1000)->nullable()->change();
 		});

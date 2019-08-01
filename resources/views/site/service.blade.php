@@ -1,7 +1,7 @@
 @extends('layouts.site.app')
 
 @section('content')
-<div class="fullwidth-block latest-news-section">
+<div class="page">
 	<div class="container">
 		<div class="hero hero-slider">
 			<div class="slides">

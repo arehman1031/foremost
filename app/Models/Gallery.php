@@ -10,7 +10,7 @@ use Eloquent as Model;
  * @version July 28, 2019, 6:46 pm PKT
  *
  * @property \App\Models\Category category
- * @property \Illuminate\Database\Eloquent\Collection 
+ * @property \Illuminate\Database\Eloquent\Collection
  * @property string name
  * @property string desc
  * @property string image
@@ -20,7 +20,7 @@ class Gallery extends Model
 {
 
     public $table = 'galleries';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -53,14 +53,8 @@ class Gallery extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'category_id' => 'required'
+        'category_id' => 'required',
+		'image' => 'required',
+		'desc'  => 'max:1000'
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function category()
-    {
-        return $this->belongsTo(\App\Models\Category::class, 'category_id');
-    }
 }

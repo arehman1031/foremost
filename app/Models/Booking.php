@@ -52,20 +52,4 @@ class Booking extends Model
         'user_id' => 'required',
         'package_id' => 'required'
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function package()
-    {
-        return $this->belongsTo(\App\Models\Package::class, 'package_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function user()
-    {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
-    }
 }

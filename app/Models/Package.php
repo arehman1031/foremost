@@ -58,22 +58,8 @@ class Package extends Model
     public static $rules = [
         'name' => 'required',
         'category_id' => 'required',
-        'parlor_id' => 'required'
+        'parlor_id' => 'required',,
+		'image' => 'required',
+		'desc'  => 'max:1000'
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function category()
-    {
-        return $this->belongsTo(\App\Models\Category::class, 'category_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function parlor()
-    {
-        return $this->belongsTo(\App\Models\Parlor::class, 'parlor_id');
-    }
 }

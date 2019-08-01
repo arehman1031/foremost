@@ -50,7 +50,9 @@ class Parlor extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'desc' => 'required'
+        'desc' => 'required',
+		'image' => 'required',
+		'desc'  => 'max:1000'
     ];
 
 
