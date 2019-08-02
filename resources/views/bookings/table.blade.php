@@ -15,7 +15,7 @@
 				<td>{!! $booking->package->name !!}</td>
                 <td>{!! $booking->user->name !!}</td>
 				<td>{!!  \Carbon\Carbon::parse($booking->date)->format('d M, Y') !!}</td>
-				<td>{!! \Carbon\Carbon::parse($booking->time)->format('H:i') !!}</td>
+				<td>{!! \Carbon\Carbon::parse($booking->time)->format('H:i A') !!}</td>
                 <td>
                     {!! Form::open(['route' => ['bookings.destroy', $booking->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
