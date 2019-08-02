@@ -6,7 +6,7 @@
 		<div class="hero hero-slider">
 			<div class="slides">
 				<h2 class="slider-title">{{ $this_package->name }} <a href="{!! Storage::url($this_package->image) !!}" class="pull-right" ><img src="{!! Storage::url($this_package->image) !!}" alt="{!! $this_package->name !!}" height="100px" width="200px"></a></h2>
-
+				<a href="{{ route('parlor_details', $this_package->parlor->id) }}"><h3>{{$this_package->parlor->name}}</a></h3>
 			</div>
 			<hr/>
 			<p> {{ $this_package->desc }}</p>

@@ -57,4 +57,9 @@ class Gallery extends Model
 		'image' => 'required',
 		'desc'  => 'max:1000'
     ];
+
+	public function category()
+	{
+		return $this->belongsTo('App\Category');
+	}
 }

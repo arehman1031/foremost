@@ -52,4 +52,14 @@ class Booking extends Model
         'user_id' => 'required',
         'package_id' => 'required'
     ];
+	
+	public function user()
+	{
+		return $this->belongsTo('\App\User');
+	}
+
+	public function package()
+	{
+		return $this->belongsTo('\App\Package');
+	}
 }

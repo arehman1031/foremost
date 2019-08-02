@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="hero hero-slider">
 			<div class="slides">
-				<h2 class="slider-title">{{ $service->name }}</h2>
+				<h2 class="slider-title">{{ $service->name }}<a href="#" class="pull-right" ><img src="{!! Storage::url($service->image) !!}" alt="{!! $service->name !!}" height="100px" width="200px"></a></h2>
 			</div>
 			<hr/>
 			<p> {{ $service->desc }}</p>
@@ -24,7 +24,7 @@
 						<a href="{{route('add_like', $package->id)}}"><i class="fa fa-thumbs-up col-brown"></i></a>
 					</div>
 					<div class="entry-detail">
-						<div class="entry-summary"> <a href="{{ route('package_detail, $package->id') }}" class="more-icon"><img src="{{ Storage::url($package->image) }}"></a></div>
+						<div class="entry-summary"> <a href="{{ route('package_detail', $package->id) }}" class="more-icon"><img src="{{ Storage::url($package->image) }}"></a></div>
 					</div>
 				</div>
 			</div>

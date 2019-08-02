@@ -39,9 +39,11 @@
 			@foreach($services as $service)
 			<div class="col-md-3">
 				<div class="feature">
-					<img src="{{Storage::url($service->image)}}" class="feature-image">
-					<h3 class="feature-title">{{ $service->name }}</h3>
-					<p>{{ $service->desc }}</p>
+					<a href="{{ route('service', $service->id) }}">
+						<img src="{{Storage::url($service->image)}}" class="feature-image">
+						<h3 class="feature-title">{{ $service->name }}</h3>
+						<p>{{ $service->desc }}</p>
+					</a>
 				</div>
 			</div>
 			@endforeach

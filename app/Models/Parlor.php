@@ -55,5 +55,8 @@ class Parlor extends Model
 		'desc'  => 'max:1000'
     ];
 
-
+	public function packages()
+	{
+		return $this->hasMany('\App\Package');
+	}
 }
