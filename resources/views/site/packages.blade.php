@@ -18,7 +18,7 @@
 						<a href="{{route('add_like', $package->id)}}"><i class="fa fa-thumbs-up col-brown"></i></a>
 					</div>
 					<div class="entry-detail">
-						<div class="entry-summary"> <a href="{{ route('package_detail, $package->id') }}" class="more-icon"><img src="{{ Storage::url($package->image) }}"></a></div>
+						<div class="entry-summary"> <a href="{{ route('package_detail', $package->id) }}" class="more-icon"><img src="{{ Storage::url($package->image) }}"></a></div>
 					</div>
 				</div>
 			</div>
