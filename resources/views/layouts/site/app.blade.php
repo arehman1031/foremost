@@ -61,8 +61,8 @@
 							<li class="menu-item"><a href="{{ route('home') }}" class="btn btn-link">Dashboard</a></li>
 							@endif
 							<li class="menu-item">
-								<form action="{{route('all_parlors')}}" class="subscribe-form">
-									<input type="text" placeholder="Parlor name...">
+								<form action="{{route('all_parlors')}}" method="get" class="subscribe-form">
+									<input type="text" placeholder="Parlor name..." name="search">
 									<input type="submit" value="Search">
 								</form>
 							</li>

@@ -89,7 +89,7 @@ class SiteController extends Controller
 		$package->popularity++;
 		$package->save();
 
-		return redirect('/');
+		return redirect(route('package_detail', $package->id));
 	}
 
 	public function packageDetail(\App\Package $package)
