@@ -11,6 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends AppBaseController
 {
@@ -120,17 +121,27 @@ class BookingController extends AppBaseController
      */
     public function update($id, UpdateBookingRequest $request)
     {
-        $booking = $this->bookingRepository->findWithoutFail($id);
+        $booking	= $this->bookingRepository->findWithoutFail($id);
 
         if (empty($booking)) {
             Flash::error('Booking not found');
 
             return redirect(route('bookings.index'));
         }
+		$input 				= $request->all();
+		$user				= Auth::user();
+		$input['user_id'] 	= $user->id;
 
-        $booking = $this->bookingRepository->update($request->all(), $id);
+        $booking 	= $this->bookingRepository->update($input, $id);
+		$msg 		= 'Booking has been made successfully.';
 
-        Flash::success('Booking updated successfully.');
+		Mail::to($user->email)->send(new \App\Mail\PackageBooking($booking));
+		try {
+			$msg .= 'You will receive email confirmation soon.';
+			Flash::success($msg);
+		} catch (\Exception $e) {
+			Flash::warning('Our system is not able to send email right now. Please report this issue. Thanks.');
+		}
 
         return redirect(route('bookings.index'));
     }

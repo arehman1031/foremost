@@ -62,8 +62,6 @@ class SiteController extends Controller
 			'time'			=> $dt->toTimeString()
 		]);
 
-		Flash::success('Booking saved successfully.');
-
 		return redirect(route('bookings.edit', $booking->id));
 	}
 
